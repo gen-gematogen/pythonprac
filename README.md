@@ -1,2 +1,2 @@
 # pythonprac
-Practicum in python, 3 year of CS MSU
+Repo of practicus tasks of 3 year of MSU CMC
