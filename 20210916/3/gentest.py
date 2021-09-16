@@ -1,1 +1,1 @@
-print(sorted(eval(input()))[-1])
+print(max(eval(input())))
