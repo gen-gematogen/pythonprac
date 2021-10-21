@@ -1,0 +1,3 @@
+:foo y print(y)
+foo 'Hello'
+quit the_end
