@@ -2,4 +2,6 @@
 x -1
 :splitter s s.split('_')
 splitter "Hello_world"
-quit buy-buy
+:big_FUNCTION x y z m x**y+z**m
+big_FUNCTION 1 2 3 0.1
+quit 'Have_a_good_day_mate:=),{}_()_{}'

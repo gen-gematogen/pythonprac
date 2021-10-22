@@ -1,3 +1,3 @@
 :foo y print(y)
 foo 'Hello'
-quit the_end
+quit "How're_u_doin_dude_№_{}.{}?"

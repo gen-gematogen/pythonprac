@@ -1,5 +1,5 @@
 :function x x^2+1
-:another_function w f"another_function_{w}"
+:another_function_with_two_parametres w param f"another_function_{w}{param}"
 function 1
-another_function "foo()"
-quit end
+another_function_with_two_parametres "foo" "({[]})"
+quit "{}__(--)__{}"
