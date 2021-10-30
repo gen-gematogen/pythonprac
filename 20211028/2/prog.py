@@ -7,5 +7,4 @@ def slide(seq, n):
         yield from itertools.islice(seq, i, i + n)
         i += 1
 
-print(*list(slide([1], 1)))
-#exec(sys.stdin.read())
+exec(sys.stdin.read())
