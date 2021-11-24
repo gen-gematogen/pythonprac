@@ -1,0 +1,12 @@
+class C:
+        num = Num()
+
+c, d = C(), C()
+c.num = 2
+d.num = 10
+print(c.num)
+print(d.num)
+c.num = "password)"
+print(c.num+d.num)
+d.num = ""
+print(c.num+d.num)

@@ -1,0 +1,12 @@
+class C:
+        num = Num()
+
+print(C().num)
+c, d = C(), C()
+c.num = d.num = 100
+print(c.num)
+print(d.num)
+c.num = "Hello WOrld!"
+print(c.num+d.num)
+d.num = range(10, 100, 13)
+print(c.num-d.num)
