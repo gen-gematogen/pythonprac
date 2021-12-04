@@ -11,3 +11,6 @@ class dump(type):
                     return method(*args, **kwargs)
                 setattr(self, method_name, new_method)
         return super().__init__(name, parents, ns)
+
+import sys
+exec(sys.stdin.read())

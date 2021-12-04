@@ -1,0 +1,11 @@
+class C(metaclass=dump):
+	def __init__(self, rep = 1):
+		self.rep = rep
+		print("meta" * rep)
+	def alien_mark(self, val):
+		if (self.rep^val)%2:
+			return "sure"
+		return "maybe"
+
+c = C(3)
+print(c.alien_mark(1001))
