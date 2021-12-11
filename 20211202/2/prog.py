@@ -1,10 +1,15 @@
-class C:
-    field: int = 42
-    def __init__(self, value: int = 2):
-        self.field = value
+from __future__ import annotations
+import sys
+from typing import get_type_hints
 
-    def string(self, level: int = 1) -> str:
-        return f"{'<'*level}{self.field}{'>'*level}"
+class check(type):
+    def __init__(self, name, parents, ns):
+        def check_annotations(self):
+            annotations = get_type_hints(self, globalns = globals(), localns = ns)
+            for name in annotations:
+                if not hasattr(self, name) or not issubclass(type(getattr(self, name)), annotations[name]):
+                        return False
+            return True
+        setattr(self, 'check_annotations', check_annotations)
 
-c = C()
-print(c.string())
+exec(sys.stdin.read())
