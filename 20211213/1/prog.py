@@ -1,9 +1,6 @@
 import random
 import asyncio
-
-L = list(range(16))
-random.shuffle(L)
-LL = L.copy()
+import sys
 
 async def merge(b0, b1, e1, l_event, r_event, new_event):
     if b1 - b0 != 1:
@@ -20,7 +17,6 @@ async def merge(b0, b1, e1, l_event, r_event, new_event):
             b1 += 1
         i += 1
     await asyncio.sleep(0)
-    print(b, e1)
     LL[i:e1] = L[b0:e0] + L[b1:e1]
     L[b:e1] = LL[b:e1]
     
@@ -44,6 +40,10 @@ async def joiner():
             new_event = events[(i, i + b)]
             tasks.append(asyncio.create_task(merge(i, i + b // 2, i + b, r_event, l_event, new_event)))
         await asyncio.gather(*tasks)
+
+L = list(eval(input()))
+random.shuffle(L)
+LL = L.copy()
 
 asyncio.run(joiner())
 print(L)
