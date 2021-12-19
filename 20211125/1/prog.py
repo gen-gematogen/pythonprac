@@ -12,8 +12,6 @@ for i in range(n):
 
 slices.sort()
 
-#sys.stdout.buffer.write(k)
 for i in slices:
-    #sys.stdout.buffer.write(i)
     k += i
 sys.stdout.buffer.write(k)
