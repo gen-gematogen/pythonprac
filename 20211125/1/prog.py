@@ -14,7 +14,7 @@ slices = []
 #    L += sz
 
 for i in range(n):
-    slices.append(data[1 + i * l // n: 1 + (i + 1) // n])
+    slices.append(data[1 + i * l // n: 1 + (i + 1) * l // n])
 
 slices.sort()
 
