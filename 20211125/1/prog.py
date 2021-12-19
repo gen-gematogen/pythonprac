@@ -3,14 +3,17 @@ import sys
 data = sys.stdin.buffer.read()
 n = data[0]
 l = len(data) - 1
-k = n
+k = data[0:1]
+data = data[1:]
 slices = []
 
 for i in range(n):
-    slices.append(data[1 + i * l // n: 1 + (i + 1) * l // n])
+    slices.append(data[i * l // n: (i + 1) * l // n])
 
 slices.sort()
 
-sys.stdout.buffer.write(data[:1])
+#sys.stdout.buffer.write(k)
 for i in slices:
-    sys.stdout.buffer.write(i)
+    #sys.stdout.buffer.write(i)
+    k += i
+sys.stdout.buffer.write(k)
