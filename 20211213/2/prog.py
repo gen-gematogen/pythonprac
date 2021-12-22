@@ -1,7 +1,9 @@
 import random
 import asyncio
+import math
+from collections import defaultdict
 
-L = list(range(16))
+L = eval(input())
 random.shuffle(L)
 LL = L.copy()
 
@@ -20,41 +22,28 @@ async def merge(b0, b1, e1, l_event, r_event, new_event):
             b1 += 1
         i += 1
     await asyncio.sleep(0)
-    print(b, e1)
     LL[i:e1] = L[b0:e0] + L[b1:e1]
     L[b:e1] = LL[b:e1]
     
     new_event.set()
 
 async def joiner():
-    tasks, n = [], 0
-    events = dict()
+    tasks = []
+    events = defaultdict(asyncio.Event)
 
-    sections = []
-    last = [[0, len(L)]]
-
-    while last[0][1] - last[0][0] > 1:
-        section.append(*last)
-        new_last = []
-        for l in last:
-            new_last.append([l[0], l[1] // 2])
-            new_last.append([l[1] // 2, l[1]])
-        last = new_last
-
-    section.append(last)
-
-    for p in range(4):
+    for p in range(math.ceil(math.log2(len(L)))):
         b = 2**(p+1)
         for i in range(0, len(L), b):
-            events[(i, i + b)] = asyncio.Event()
+            if i + b // 2 >= len(L):
+                events[(i, len(L))].set()
+                continue
+            l_event = events[(i, i + b // 2)]
+            r_event = events[(i + b // 2, min(i + b, len(L)))]
             if b == 2:
-                l_event = None
-                r_event = None
-            else:
-                l_event = events[(i, i + b // 2)]
-                r_event = events[(i + b // 2, i + b)]
-            new_event = events[(i, i + b)]
-            tasks.append(asyncio.create_task(merge(i, i + b // 2, i + b, r_event, l_event, new_event)))
+                l_event.set()
+                r_event.set()
+            new_event = events[(i, min(i + b, len(L)))]
+            tasks.append(asyncio.create_task(merge(i, i + b // 2, min(i + b, len(L)), r_event, l_event, new_event)))
         await asyncio.gather(*tasks)
 
 asyncio.run(joiner())
