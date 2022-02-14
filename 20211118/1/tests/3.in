@@ -1,0 +1,8 @@
+@objcount
+class mamba:
+    def __del__(self):
+        print("Mamba destroyed!")
+c, d, e = mamba(), mamba(), mamba()
+print(mamba.counter)
+c = 100500
+print(mamba.counter)

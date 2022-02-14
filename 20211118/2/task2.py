@@ -3,19 +3,18 @@ class Num:
         return getattr(self, 'value', 0)
     def __set__(self, obj, val = 0):
         try:
-            value = val.real
+            self.value = val.real
         except:
-            value = val.__len__()
-        self.value = value
+            self.value = val.__len__()
 
 class C:
-    d = Num()
+        num = Num()
 
-c = C()
-p = C()
-c.d = [1, 2]
-print(c.d) #2
-print(p.d) #2
-p.d = 100
-print(p.d) #100
-print(c.d) #100
+print(C().num)
+c, d = C(), C()
+c.num = d.num = 2
+print(c.num+d.num)
+c.num = "qwerqwerqwer"
+print(c.num+d.num)
+d.num = range(10, 1000, 7)
+print(c.num+d.num)

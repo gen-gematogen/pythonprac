@@ -1,0 +1,10 @@
+@objcount
+class my_cls:
+    pass
+
+c, d, e = my_cls(), my_cls(), my_cls()
+print(my_cls.counter)
+c = 1
+print(my_cls.counter)
+c = my_cls()
+print(my_cls.counter)

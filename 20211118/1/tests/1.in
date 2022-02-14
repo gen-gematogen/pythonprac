@@ -1,0 +1,9 @@
+@objcount
+class my_str(str):
+	pass
+
+print(my_str.counter)
+c, d, e = my_str(), my_str(), my_str()
+print(my_str.counter)
+c = d = 'QQ'
+print(my_str.counter)
