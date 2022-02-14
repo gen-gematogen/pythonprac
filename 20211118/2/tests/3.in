@@ -1,0 +1,11 @@
+class C:
+        num = Num()
+
+print(C().num)
+c, d = C(), C()
+print(c.num)
+print(d.num)
+c.num = "Hello"
+d.num = "World"
+print(c.num+d.num)
+

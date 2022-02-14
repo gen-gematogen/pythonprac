@@ -1,0 +1,10 @@
+class C(metaclass=dump):
+	def __init__(self, name):
+		print(f"Hello, my name is {name}")
+		self.name = name
+
+	def boo(self):
+		print(f"{self.name} is scared!")
+
+c = C('Suzy')
+c.boo()

@@ -1,0 +1,13 @@
+class C(metaclass=check):
+    A: bool
+    B: int
+
+c = C()
+c.A = 1
+print(c.check_annotations())
+c.A = False
+print(c.check_annotations())
+c.B = 1
+print(c.check_annotations())
+c.B = [1]
+print(c.check_annotations())

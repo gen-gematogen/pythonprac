@@ -1,0 +1,4 @@
+alp = Alpha(a = 1, b = 2, c = 3, z = 100)
+print(alp)
+alq = AlphaQ(a = 1, b = 2, c = 3, z = 100)
+print(alq)

@@ -17,10 +17,16 @@ print(('#' + '.' * (H - 2) + '#\n') * gas_rows, end = '')
 print(('#' + '~' * (H - 2) + '#\n') * liquid_rows, end = '')
 print('#' * H)
 if liquid > gas:
-    row_len = round(gas / liquid * 20)
-    print('.' * row_len + ' ' + f"{gas:>{len(str(liquid)) + row_len}}" + '/' + str(gas + liquid))
+    if liquid != 0:
+        row_len = round(gas / liquid * 20)
+    else:
+        row_len = 0
+    print('.' * row_len + ' ' + f'{gas:>{len(str(liquid)) + 20 - row_len}}' + '/' + str(gas + liquid))
     print('~' * 20 + ' ' + str(liquid) + '/' + str(gas + liquid))
 else:
-    row_len = round(liquid / gas * 20)
+    if gas != 0:
+        row_len = round(liquid / gas * 20)
+    else:
+        row_len = 0
     print('.' * 20 + ' ' + str(gas) + '/' + str(gas + liquid))
-    print('~' * row_len + ' ' + f'{liquid:>{len(str(gas)) + row_len}}' + '/' + str(gas + liquid))
+    print('~' * row_len + ' ' + f'{liquid:>{len(str(gas)) + 20 - row_len}}' + '/' + str(gas + liquid))

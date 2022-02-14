@@ -1,0 +1,14 @@
+class C(metaclass=check):
+    A: int
+    B: str = "QQ"
+    D: list = [1, 2, 3]
+
+c = C()
+c.A = 1.0
+print(c.check_annotations())
+c.D = "Hi"
+print(c.check_annotations())
+c.A = 100500
+print(c.check_annotations())
+c.D = [1]
+print(c.check_annotations())	

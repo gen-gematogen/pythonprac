@@ -1,0 +1,8 @@
+class red_bull(metaclass=dump):
+	def __init__(self):
+		print('Radio cheeeck!')
+	def seb(self):
+		return "Here comes Sebastion Vettel..."
+
+rb = red_bull()
+print(rb.seb())
