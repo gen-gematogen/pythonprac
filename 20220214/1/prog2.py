@@ -20,8 +20,24 @@ else:
             
         kind, size = header.split()
 
-        if kind == b"commit":
-            print(kind.decode(), ' ', int(size), '\n', body.decode(), sep = '')
+        # Print commit data
+        print(kind.decode(), ' ', int(size), '\n', body.decode(), sep = '')
+
+        tree_id = body.split()[1].decode()
+        tree_path = join('.git', 'objects', tree_id[:2], tree_id[2:])
+        with open(tree_path, 'rb') as f:
+            header, _, body = zlib.decompress(f.read()).partition(b'\x00')
+
+        kind, size = header.split()
+       
+        print(kind.decode(), int(size))
+        while body:
+            tree_hdr, _, tail = body.partition(b'\x00')
+            attr, _, f_name = tree_hdr.partition(b' ')
+            git_id, body = body[:20], body[20:]
+            print(f"{f_name.decode()}, {attr.hex()}, {git_id.hex()}")
+
+
     
 #    for objname in iglob(repopath):
 #        print(objname)
