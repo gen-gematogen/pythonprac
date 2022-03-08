@@ -1,4 +1,5 @@
 import textdistance
+from multiprocessing import Pool
 
 def dist(s1, s2, s3):
     if s3 == "L":
@@ -11,4 +12,6 @@ s = input()
 s1, s2 = s.split()[:2]
 s3 = input()
 
-res = dist(s1, s2, s3)
+with Pool(1) as p:
+    res = p.map(dist, [(s1, s2, s3)])
+    print(res)
