@@ -13,7 +13,7 @@ s1, s2 = s.split()[:2]
 s3 = input()
 
 with Pool(1) as p:
-    res = p.map(dist, [(s1, s2, s3)])
+    res = p.apply_async(dist, (s1, s2, s3))
     try:
         print(res.get(timeout=1))
     except:
